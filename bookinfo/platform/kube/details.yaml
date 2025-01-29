@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: details
-          image: nataliaburguillo/details-10:latest  # Imagen subida a Docker Hub
+          image: gcr.io/practica-443518/details-10  # Imagen subida a Docker Hub
           ports:
             - containerPort: 9080
 ---
