@@ -1,31 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ratings
+  name: productpage
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: ratings
+      app: productpage
   template:
     metadata:
       labels:
-        app: ratings
+        app: productpage
     spec:
       containers:
-        - name: ratings
-          image: nataliaburguillo/ratings-10:latest  # Imagen subida a Docker Hub
+        - name: productpage
+          image: nataliaburguillo/productpage-10:latest  # Imagen subida a Docker Hub
           ports:
             - containerPort: 9080
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: ratings
+  name: productpage
 spec:
   selector:
-    app: ratings
+    app: productpage
   ports:
     - protocol: TCP
       port: 9080
-  type: ClusterIP
+  type: LoadBalancer
