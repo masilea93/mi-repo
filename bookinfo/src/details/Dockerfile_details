@@ -1,0 +1,16 @@
+FROM ruby:2.7.1-slim
+
+# Variables de entorno que pide el enunciado
+ENV SERVICE_VERSION=v1
+ENV ENABLE_EXTERNAL_BOOK_SERVICE=true
+
+WORKDIR /opt/microservices
+
+# Copiamos el fichero details.rb
+COPY details.rb .
+
+# Exponemos el puerto 9080
+EXPOSE 9080
+
+# Ejecutamos el script de ruby pasando el puerto
+CMD ["ruby", "details.rb", "9080"]

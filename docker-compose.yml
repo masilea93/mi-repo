@@ -1,0 +1,44 @@
+version: '3'
+services:
+ productpage:
+  build: ./bookinfo/src/productpage
+  image: productpage/10
+  container_name: productpage-10
+  ports:
+   - "9080:9080"
+  environment:
+   GROUP_NUM: 10
+  depends_on:
+   - details
+   - reviews
+   - ratings
+
+ details:
+  build: ./bookinfo/src/details
+  image: details/10
+  container_name: details-10
+  ports:
+   - "9081:9080"
+  environment:
+   SERVICE_VERSION: v1
+   ENABLE_EXTERNAL_BOOK_SERVICE: "true"
+
+ reviews:
+  build: ./bookinfo/src/reviews/reviews-wlpcfg
+  image: reviews/10:v3
+  container_name: reviews-10-v3
+  ports:
+   - "9082:9080"
+  environment:
+   SERVICE_VERSION: v3
+   ENABLE_RATINGS: "true"
+   STAR_COLOR: "red"
+
+ ratings:
+  build: ./bookinfo/src/ratings
+  image: ratings/10
+  container_name: ratings-10
+  ports:
+   - "9083:9080"
+  environment:
+   SERVICE_VERSION: v1

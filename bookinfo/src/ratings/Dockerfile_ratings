@@ -1,0 +1,16 @@
+FROM node:12.18.1-slim
+
+# Variable de entorno
+ENV SERVICE_VERSION=v1
+
+WORKDIR /opt/microservices
+
+# Copiamos el package.json y el código
+COPY package.json .
+# Instalamos dependencias
+RUN npm install
+COPY ratings.js .
+# Exponemos puerto 9080
+EXPOSE 9080
+
+CMD ["node", "ratings.js", "9080"]
