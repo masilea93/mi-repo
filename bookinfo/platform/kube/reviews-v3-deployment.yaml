@@ -17,5 +17,12 @@ spec:
       containers:
         - name: reviews-v3
           image: gcr.io/practica-443518/reviews-10:v3  # Imagen subida a Docker Hub
+          env:
+          - name: SERVICE_VERSION
+            value: "v3"
+          - name: ENABLE_RATINGS
+            value: "true"
+          - name: STAR_COLOR
+            value: "red"
           ports:
             - containerPort: 9080
