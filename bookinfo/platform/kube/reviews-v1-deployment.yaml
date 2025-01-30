@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: reviews-v1
-          image: nataliaburguillo/reviews-10:v1  # Imagen subida a Docker Hub
+          image: gcr.io/practica-443518/reviews-10:v1  # Imagen subida a Docker Hub
           ports:
             - containerPort: 9080

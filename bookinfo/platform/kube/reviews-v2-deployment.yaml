@@ -16,6 +16,13 @@ spec:
     spec:
       containers:
         - name: reviews-v2
-          image: nataliaburguillo/reviews-10:v2  # Imagen subida a Docker Hub
+          image: gcr.io/practica-443518/reviews-10:v2  # Imagen subida a Docker Hub
+          env:
+          - name: SERVICE_VERSION
+            value: "v2"
+          - name: ENABLE_RATINGS
+            value: "true"
+          - name: STAR_COLOR
+            value: "black"
           ports:
             - containerPort: 9080
